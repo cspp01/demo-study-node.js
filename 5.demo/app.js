@@ -13,6 +13,7 @@ global.db = mongoose.connect( 'mongodb://127.0.0.1:27017/test', {
 } ).then( db => {
     console.log( '连接成功' );
 } );
+// ejs
 // 后缀.ejs可以改为.html
 app.set( 'view engine', 'html' );
 app.engine( 'html', ejs.__express );
