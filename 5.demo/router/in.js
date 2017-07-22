@@ -1,9 +1,12 @@
 let express = require( 'express' ),
-    router = express.Router();
+    router = express.Router(),
+    session = require( 'express-session' );
 // 首页
 router.get( '/', ( req, res ) => {
+    req.query.t && delete req.session.userInfo;
     res.render( 'index', {
-        title : '首页'
+        title : '首页',
+        userInfo : req.session.userInfo || null
     } )
 } );
 // 登录路由
@@ -36,6 +39,12 @@ router.route( '/login' ).get( ( req, res ) => {
             if( docs.length === 0 ) {
                 res.send( { msg : '用户名或密码错误', cod : 400 } );
             } else {
+                let userInfo = {
+                    name : reqs.user,
+                    age : docs[ 0 ].pass,
+                };
+                // 把登录数据加入session
+                req.session.userInfo = userInfo;
                 res.send( { msg : '登陆成功', cod : 201 } );
             }
         }

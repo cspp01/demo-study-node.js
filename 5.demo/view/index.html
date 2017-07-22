@@ -9,7 +9,12 @@
 </head>
 <body style="text-align:center;font-size:20px;">
 <h1><%- title %></h1>
-<a href="./login">登录</a><br>
-<a href="./register">注册</a>
+<% if( userInfo == null ) { %>
+    <a href="./login">登录</a><br>
+    <a href="./register">注册</a>
+<% } else { %>
+    <div><%= userInfo.name %> | <%= userInfo.age %></div>
+    <div><a href="/?t=lot">退出登录</a></div>
+<% } %>
 </body>
 </html>

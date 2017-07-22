@@ -4,7 +4,9 @@ let express = require( 'express' ),
     path = require( 'path' ),
     bodyParser = require( 'body-parser' ),
     loginRouter = require( './router/in' ),
-    mongoose = require( 'mongoose' );
+    mongoose = require( 'mongoose' ),
+    session = require( 'express-session' ),
+    cookieParser = require( 'cookie-parser' );
 // 连接数据库
 mongoose.Promise  = require("bluebird");
 global.mod = require( './database/model' );
@@ -22,6 +24,14 @@ app.set( 'views', path.join( __dirname, '/view' ) );
 app.use( bodyParser.urlencoded( {
     extended : true
 } ) );
+
+//这里传入了一个密钥加session id
+app.use(cookieParser('sessiontest'));
+app.use(session({
+    secret: 'sessiontest',//与cookieParser中的一致
+    resave: true,
+    saveUninitialized:true
+}));
 
 app.use( '/', loginRouter );
 app.use( '/login', loginRouter );
