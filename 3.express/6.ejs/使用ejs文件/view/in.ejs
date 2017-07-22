@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="html,css">
+    <meta name="descrips" content="hahaha">
+    <meta name="view" content="width=deive-width">
+    <title>hah</title>
+</head>
+<body>
+<%=title%>
+<ul>
+    <% arr.forEach( function( x ) { %>
+        <li><%= x %></li>
+    <% } ) %>
+</ul>
+<ul>
+    <% arr.map( function( x ) { %>
+    <li><%= x %></li>
+    <% } ) %>
+</ul>
+<ul>
+    <% arr.some( function( x ) { %>
+    <li><%= x %></li>
+    <% } ) %>
+</ul>
+<ul>
+    <% arr.filter( function( x ) { %>
+    <li><%= x %></li>
+    <% } ) %>
+</ul>
+</body>
+</html>

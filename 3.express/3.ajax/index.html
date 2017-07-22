@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="text" name="user"/>
+    <input type="password" name="pass"/>
+    <input type="image" src="img/1.jpg" style="width:100px;border:1px solid #333;">
+    <a href="javascript:aa()">提交</button>
+        <div id="box"></div>
+</body>
+<script src="js/in.js"></script>
+<script>
+    let a = new Aa( 1, 2 );
+    console.log( a.a() );
+    function aa() {
+        let uv = document.getElementsByName( 'user' )[ 0 ].value,
+            pv = document.getElementsByName( 'pass' )[ 0 ].value,
+            box = document.getElementById( 'box' ),
+            xtth = new XMLHttpRequest();
+        xtth.open( 'POST', './register' );
+        xtth.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+        xtth.send( 'user=' + uv + '&pass=' + pv );
+        xtth.onreadystatechange =  () => {
+            if( xtth.readyState == 1 || xtth.readyState == 2 || xtth.readyState == 3 ) {
+                console.log( '加载中' );
+            } else if( xtth.readyState == 4 && xtth.status == 200 ) {
+                console.log( xtth.responseText );
+                box.innerHTML = xtth.responseText
+            }
+        };
+    }
+</script>
+</html>

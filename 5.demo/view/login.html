@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="html,css"/>
+    <meta name="description" content="adsdads"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>登录</title>
+</head>
+<body style="text-align:center;font-size:20px;">
+<h1><%- title %></h1>
+    <input type="text" name="username" placeholder="用户名"/><br>
+    <input type="password" name="password" placeholder="密码"/><br>
+    <a href="javascript:p();">登录</a>
+</body>
+<script>
+    function p() {
+        let xttp,
+            user = document.getElementsByName( 'username' )[ 0 ].value,
+            pass = document.getElementsByName( 'password' )[ 0 ].value;
+        if( window.XMLHttpRequest ) {
+            xttp = new XMLHttpRequest();
+        } else {
+            xttp = new ActiveXObject( 'Microsoft XMLHTTP' );
+        }
+        xttp.open( 'POST', './login' );
+        xttp.setRequestHeader( 'Content-Type', 'application/x-www-form-urlencoded' );
+        xttp.send( 'username=' + user + '&password=' + pass );
+        xttp.onreadystatechange = () => {
+            if( xttp.readyState === 4 && xttp.status === 200 ) {
+                let ob = JSON.parse( xttp.responseText );
+                alert( ob.msg );
+                if( ob.cod === 201 ) {
+                    location.href = '../';
+                }
+            }
+        };
+    }
+</script>
+</html>

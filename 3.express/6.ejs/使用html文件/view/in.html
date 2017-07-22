@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta name="keywords" content="html,css"/>
+    <meta name="description" content="hahaha"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <link rel="icon" href="https://ss0.baidu.com/6ONWsjip0QIZ8tyhnq/it/u=380143431,1903446466&fm=58&s=59803C7385A54B111A71BD4F0300C0E1&bpow=121&bpoh=75"/>
+    <title>hah</title>
+</head>
+<body>
+<%=title%>
+<ul>
+    <% arr.forEach( function( x ) { %>
+        <li><%= x %></li>
+    <% } ) %>
+</ul>
+<ul>
+    <% arr.map( function( x ) { %>
+    <li><%= x %></li>
+    <% } ) %>
+</ul>
+<ul>
+    <% arr.some( function( x ) { %>
+    <li><%= x %></li>
+    <% } ) %>
+</ul>
+<ul>
+    <% arr.filter( function( x ) { %>
+    <li><%= x %></li>
+    <% } ) %>
+</ul>
+</body>
+</html>
